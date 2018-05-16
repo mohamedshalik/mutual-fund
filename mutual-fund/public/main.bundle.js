@@ -774,7 +774,7 @@ var AdminComponent = /** @class */ (function () {
         var _this = this;
         this.userid = this._loginService.getUsername();
         //console.log(this.userid);
-        this.http.get('http://localhost:3000/users/viewProfile/' + this.userid).subscribe(function (data) {
+        this.http.get('https://mutual-fund.herokuapp.com/users/viewProfile/' + this.userid).subscribe(function (data) {
             // console.log(data);
             _this.userdetails = data;
         }, function (err) { return console.log(err); });
@@ -790,7 +790,7 @@ var AdminComponent = /** @class */ (function () {
             gender: formValue.gender,
             mobileNumber: formValue.mobileNumber,
         };
-        this.http.post('http://localhost:3000/users/updatebaseinfo/' + this.userid, updatedbaseinfo).subscribe(function (res) {
+        this.http.post('https://mutual-fund.herokuapp.com/users/updatebaseinfo/' + this.userid, updatedbaseinfo).subscribe(function (res) {
             console.log(res);
         }, function (err) {
             console.log("Error occured ");
@@ -862,7 +862,7 @@ var AddCategoryComponent = /** @class */ (function () {
         this._logindata = _logindata;
         this.enableedit = false;
         this.category = {};
-        this.uploader = new __WEBPACK_IMPORTED_MODULE_3_ng2_file_upload__["FileUploader"]({ url: 'http://localhost:3000/users/profile' });
+        this.uploader = new __WEBPACK_IMPORTED_MODULE_3_ng2_file_upload__["FileUploader"]({ url: 'https://mutual-fund.herokuapp.com/users/profile' });
     }
     AddCategoryComponent.prototype.ngOnInit = function () {
     };
@@ -875,7 +875,7 @@ var AddCategoryComponent = /** @class */ (function () {
             Category_name: formValue.Category_name,
             Category_description: formValue.Category_description
         };
-        this.http.post('http://localhost:3000/users/createCategory', newCategory).subscribe(function (res) {
+        this.http.post('https://mutual-fund.herokuapp.com/users/createCategory', newCategory).subscribe(function (res) {
             console.log(res);
         }, function (err) {
             console.log("Error occured");
@@ -948,7 +948,7 @@ var CategoryComponentAdmin = /** @class */ (function () {
     }
     CategoryComponentAdmin.prototype.ngOnInit = function () {
         var _this = this;
-        this.http.get('http://localhost:3000/users/viewCategory').subscribe(function (data) {
+        this.http.get('https://mutual-fund.herokuapp.com/users/viewCategory').subscribe(function (data) {
             // console.log(data);
             _this.Categorys = data;
         }, function (err) { return console.log(err); });
@@ -958,7 +958,7 @@ var CategoryComponentAdmin = /** @class */ (function () {
         this.router.navigate(['dashboard', { outlets: { 'admin': ['updateCategory', category] } }]);
     };
     CategoryComponentAdmin.prototype.deleteCategory = function (category) {
-        this.http.get('http://localhost:3000/users/deleteCategory/' + category).subscribe(function (data) {
+        this.http.get('https://mutual-fund.herokuapp.com/users/deleteCategory/' + category).subscribe(function (data) {
             //     console.log("Deleted sucessfully");
         }, function (err) { return console.log(err); });
         this.router.navigate(['dashboard', { outlets: { 'admin': ['addcategoryadmin'] } }]);
@@ -1028,7 +1028,7 @@ var UpdateCategoryComponent = /** @class */ (function () {
             // console.log(params['_id']);
             _this.id = params['_id'];
         });
-        this.http.get('http://localhost:3000/users/updateCategory/' + this.id).subscribe(function (data) {
+        this.http.get('https://mutual-fund.herokuapp.com/users/updateCategory/' + this.id).subscribe(function (data) {
             // console.log(data);
             _this.category = data;
         }, function (err) { return console.log(err); });
@@ -1038,7 +1038,7 @@ var UpdateCategoryComponent = /** @class */ (function () {
             Category_name: formValue.Category_name,
             Category_description: formValue.Category_description
         };
-        this.http.post('http://localhost:3000/users/updateCategory/' + this.id, updatedcategory).subscribe(function (res) {
+        this.http.post('https://mutual-fund.herokuapp.com/users/updateCategory/' + this.id, updatedcategory).subscribe(function (res) {
             console.log(res);
         }, function (err) {
             console.log("Error occured ");
@@ -1163,7 +1163,7 @@ var DashboardComponent = /** @class */ (function () {
         this.userid = this._loginService.getUseremail();
         // Observable.interval(2000).subscribe(x => {
         // console.log(this.userid);
-        this.http.get('http://localhost:3000/users/viewbasket/' + this.userid).subscribe(function (data) {
+        this.http.get('https://mutual-fund.herokuapp.com/users/viewbasket/' + this.userid).subscribe(function (data) {
             data.forEach(function (element) {
                 _this.count++;
             });
@@ -1242,7 +1242,7 @@ var BasketComponent = /** @class */ (function () {
         var _this = this;
         this.useremail = this._loginService.getUseremail();
         console.log(this.useremail);
-        this.http.get('http://localhost:3000/users/viewbasket/' + this.useremail).subscribe(function (data) {
+        this.http.get('https://mutual-fund.herokuapp.com/users/viewbasket/' + this.useremail).subscribe(function (data) {
             //console.log(data.data);
             _this.basketdetails = data;
         }, function (err) { return console.log(err); });
@@ -1251,7 +1251,7 @@ var BasketComponent = /** @class */ (function () {
         var updatebasket = {
             Scheme_unit: Scheme_unit,
         };
-        this.http.post('http://localhost:3000/users/updatebasket/' + Scheme_number + '/' + User_email, updatebasket).subscribe(function (res) {
+        this.http.post('https://mutual-fund.herokuapp.com/users/updatebasket/' + Scheme_number + '/' + User_email, updatebasket).subscribe(function (res) {
             console.log(res);
         }, function (err) {
             console.log("Error occured ");
@@ -1263,7 +1263,7 @@ var BasketComponent = /** @class */ (function () {
         this.router.navigate(['dashboard', { outlets: { user: ['payment'] } }]);
     };
     BasketComponent.prototype.delete = function (Scheme_number, User_email) {
-        this.http.get('http://localhost:3000/users/deletebasket/' + Scheme_number + '/' + User_email).subscribe(function (data) {
+        this.http.get('https://mutual-fund.herokuapp.com/users/deletebasket/' + Scheme_number + '/' + User_email).subscribe(function (data) {
             console.log("Deleted sucessfully");
         }, function (err) { return console.log(err); });
         this._loginService.putremoveFromBasket();
@@ -1323,7 +1323,7 @@ var CategoryComponent = /** @class */ (function () {
     }
     CategoryComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.http.get('http://localhost:3000/users/viewCategory').subscribe(function (data) {
+        this.http.get('https://mutual-fund.herokuapp.com/users/viewCategory').subscribe(function (data) {
             // console.log(data);
             _this.Categorys = data;
         }, function (err) { return console.log(err); });
@@ -1401,7 +1401,7 @@ var FundsComponent = /** @class */ (function () {
         this.useremail = this._logindata.getUseremail();
     };
     FundsComponent.prototype.add = function (nav, scheme_number, scheme_name, amc) {
-        // this.http.get('http://localhost:3000/users/viewbasket/' + this.useremail).subscribe((data: any) => {
+        // this.http.get('https://mutual-fund.herokuapp.com/users/viewbasket/' + this.useremail).subscribe((data: any) => {
         //   //console.log(data.data);
         //   this.basket = data.data;
         // },
@@ -1417,7 +1417,7 @@ var FundsComponent = /** @class */ (function () {
             AMC: amc
         };
         //create
-        this.http.post('http://localhost:3000/users/createBasket', addBasket).subscribe(function (res) {
+        this.http.post('https://mutual-fund.herokuapp.com/users/createBasket', addBasket).subscribe(function (res) {
             console.log(res);
         }, function (err) {
             console.log("Error occured");
@@ -1650,7 +1650,7 @@ var UserComponent = /** @class */ (function () {
         var _this = this;
         this.userid = this._loginService.getUsername();
         //console.log(this.userid);
-        this.http.get('http://localhost:3000/users/viewProfile/' + this.userid).subscribe(function (data) {
+        this.http.get('https://mutual-fund.herokuapp.com/users/viewProfile/' + this.userid).subscribe(function (data) {
             // console.log(data);
             _this.userdetails = data;
         }, function (err) { return console.log(err); });
@@ -1666,7 +1666,7 @@ var UserComponent = /** @class */ (function () {
             gender: formValue.gender,
             mobileNumber: formValue.mobileNumber,
         };
-        this.http.post('http://localhost:3000/users/updatebaseinfo/' + this.userid, updatedbaseinfo).subscribe(function (res) {
+        this.http.post('https://mutual-fund.herokuapp.com/users/updatebaseinfo/' + this.userid, updatedbaseinfo).subscribe(function (res) {
             console.log(res);
         }, function (err) {
             console.log("Error occured ");
@@ -1685,7 +1685,7 @@ var UserComponent = /** @class */ (function () {
             IFSC: formValue.IFSC,
             ACC_type: formValue.ACC_type
         };
-        this.http.post('http://localhost:3000/users/updateaccinfo/' + this.userid, updatedaccinfo).subscribe(function (res) {
+        this.http.post('https://mutual-fund.herokuapp.com/users/updateaccinfo/' + this.userid, updatedaccinfo).subscribe(function (res) {
             console.log(res);
         }, function (err) {
             console.log("Error occured ");
@@ -1936,7 +1936,7 @@ var LoginComponent = /** @class */ (function () {
     LoginComponent.prototype.onSubmit = function (formValue) {
         var _this = this;
         console.log(formValue);
-        this.http.get('http://localhost:3000/users/auth/' + formValue.Lemail).subscribe(function (data) {
+        this.http.get('https://mutual-fund.herokuapp.com/users/auth/' + formValue.Lemail).subscribe(function (data) {
             _this.logindetails = data;
             console.log(data);
             if (_this.logindetails != null) {
@@ -2026,18 +2026,19 @@ var RegisterComponent = /** @class */ (function () {
         console.log(formValue);
         //   console.log("newUser = " + newAdminUser.Email_ID);
         if (formValue.pwd == formValue.repwd) {
-            this.http.post('http://localhost:3000/users/createuser', formValue).subscribe(function (res) {
+            this.http.post('https://mutual-fund.herokuapp.com/users/createuser', formValue).subscribe(function (res) {
                 console.log(res);
             }, function (err) {
                 console.log("Error occured");
             });
-            this.http.post('http://localhost:3000/send', formValue).subscribe(function (res) {
+            this.http.post('https://mutual-fund.herokuapp.com/send', formValue).subscribe(function (res) {
                 console.log(res);
             }, function (err) {
                 console.log("Error occured");
             });
             alert("Account created sucessfully..");
-            window.location.reload();
+            this.router.navigate(['/site', { outlets: { site: ['login'] } }]);
+            //window.location.reload();
         }
         else {
             alert("Password Mismatch");
