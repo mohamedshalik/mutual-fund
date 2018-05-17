@@ -2026,12 +2026,12 @@ var RegisterComponent = /** @class */ (function () {
         console.log(formValue);
         //   console.log("newUser = " + newAdminUser.Email_ID);
         if (formValue.pwd == formValue.repwd) {
-            this.http.post('http://localhost:3000/users/createuser', formValue).subscribe(function (res) {
+            this.http.post('http://mutual-fund.herokuapp.com/users/createuser', formValue).subscribe(function (res) {
                 console.log(res);
             }, function (err) {
                 console.log("Error occured");
             });
-            this.http.post('http://localhost:3000/send', formValue).subscribe(function (res) {
+            this.http.post('http://mutual-fund.herokuapp.com/send', formValue).subscribe(function (res) {
                 console.log(res);
             }, function (err) {
                 console.log("Error occured");
