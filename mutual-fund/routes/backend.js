@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var multer = require('multer');
 var userjs = require('./users')
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://127.0.0.1:27017/Mutual');
+mongoose.connect('mongodb://Shalik:MOH967@sha@ds111622.mlab.com:11622/heroku_jc2322hd');
 
 
 

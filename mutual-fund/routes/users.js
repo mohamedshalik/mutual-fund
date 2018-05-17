@@ -3,7 +3,7 @@ var router = express.Router();
 var email = require("emailjs/email");
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/Mutual');
+mongoose.connect('mongodb://Shalik:MOH967@sha@ds111622.mlab.com:11622/heroku_jc2322hd');
 var multer = require('multer');
 
 var categorySchema = new mongoose.Schema({
