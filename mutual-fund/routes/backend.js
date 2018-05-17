@@ -24,7 +24,7 @@ router.post('/send', (req, res) => {
     server.send({
         text: "Welcome to mutual fund your account created sucessfully ... ",
         from: "prgsms@gmail.com",
-        to: "mohamedshalik@gmail.com",
+        to: req.body.email,
         subject: "Welcome to Mutual Fund"
     }, function (err, message) {
         if (err) {
